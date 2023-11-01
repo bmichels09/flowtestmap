@@ -1,15 +1,11 @@
 // Create the map object with center, zoom level and default layer.
 var map = L.map('map').setView([44, -89], 9);
 
-console.log("checkpoint 1");
-
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/light-v11/tiles/{z}/{x}/{y}?access_token={accessToken}', {
 	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery (c) <a href="https://www.mapbox.com/">Mapbox</a>',
 	maxZoom: 18,
 	accessToken: api_key
 }).addTo(map);
-
-console.log("checkpoint 2");
 
 d3.csv("data/FlowTests.csv", function(data) {
     for (var i = 0; i < data.length; i++) {
@@ -49,8 +45,6 @@ d3.csv("data/FlowTests.csv", function(data) {
 
 			L.marker(L.latLng(Number(test.Latitude), Number(test.Longitude))).addTo(map)
 				.bindPopup(tooltip);
-
-			console.log("checkpoint 3");
 		}
 		
 		else {
